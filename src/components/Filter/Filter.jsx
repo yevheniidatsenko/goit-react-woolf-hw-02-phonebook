@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Filter.module.css';
 
-const Filter = ({ value, onChangeFilter }) => {
+function Filter({ value, onChangeFilter }) {
   return (
     <div>
       <label className={styles.label}>
@@ -9,14 +10,18 @@ const Filter = ({ value, onChangeFilter }) => {
         <input
           className={styles.input}
           type="text"
-          name="filter"
-          placeholder="Search contact"
+          placeholder="Search contacts..."
           value={value}
-          onChange={e => onChangeFilter(e.target.value)}
+          onChange={onChangeFilter}
         />
       </label>
     </div>
   );
+}
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChangeFilter: PropTypes.func.isRequired,
 };
 
 export default Filter;
